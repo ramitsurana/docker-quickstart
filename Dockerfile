@@ -18,6 +18,7 @@ RUN curl -sSL https://get.docker.com/ | sh
 ADD ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
 
+RUN usermod -aG docker $USER
 RUN docker run hello-world 
 
 # Define additional metadata for our image.
