@@ -18,7 +18,7 @@ RUN curl -sSL https://get.docker.com/ | sh
 ADD ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
 
-RUN docker run -i -t hello-world 
+RUN docker run hello-world 
 
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
