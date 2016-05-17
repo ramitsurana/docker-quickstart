@@ -4,12 +4,22 @@ FROM ubuntu
 
 MAINTAINER Ramit Surana "ramitsurana@gmail.com"
 
-RUN apt-get update -y
-RUN apt-get install curl -y
+RUN apt-get update -qq && apt-get install -qqy \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    lxc \
+    iptables
+    
+# Install Docker from Docker Inc. repositories.
 RUN curl -sSL https://get.docker.com/ | sh
-#RUN usermod -aG docker ubuntu
-RUN service docker restart
-RUN docker run -i -t  hello-world
 
+# Install the magic wrapper.
+ADD ./wrapdocker /usr/local/bin/wrapdocker
+RUN chmod +x /usr/local/bin/wrapdocker
 
-CMD ["/docker-quickstart"]
+RUN docker run -i -t hello-world 
+
+# Define additional metadata for our image.
+VOLUME /var/lib/docker
+CMD ["wrapdocker"]
