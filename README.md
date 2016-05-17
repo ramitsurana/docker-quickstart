@@ -19,7 +19,8 @@ Docker strongly recommends One image per one container.
 
 * It boots up a docker conatiner inside another docker container. Pretty Cool !! Huh ! 
 * It pulls up some other images using docker run.
-* 
+
+
 ## Aim of the project:
 
 The aim of the project is to setup a enviorment suitable for beginners
